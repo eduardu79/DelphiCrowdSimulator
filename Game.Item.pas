@@ -42,7 +42,7 @@ begin
   fOnBroke.UseFreeNotification := True;
 
   fQuality := iqLow;
-  base := 100;
+  base := 1000;
 
   case Quality of
     iqLow: amount := base * 0.7;
