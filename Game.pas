@@ -246,7 +246,8 @@ type
     function CanView(const target: IMobile): Boolean;
     function CanAttack(const target: IMobile): Boolean;
     function CanEquip(const equipmt: IEquipment): Boolean;
-    function CanMove(const dir: Direction): Boolean;
+    function CanMove(const dir: Direction): Boolean; overload;
+    function CanMove(const target: IObject): Boolean; overload;
     function GetAttributeLevel(const attr: AttributeType): AttributeLevel;
     function GetEquipments: TArray<IEquipment>;
     function GetWeapon: IWeapon;
@@ -283,9 +284,13 @@ type
     function GetOnClock: IEvent<EventClock>;
     function GetOnMobileDamaged: IEvent<EventDamage>;
     function GetOnMobileDied: IEvent<EventMobile>;
+    function IsDebug: Boolean;
+    function IsRunning: Boolean;
     procedure Initialize(const width, height: Word);
     procedure Resize(const width, height: Word);
     procedure Draw(const canvas: TCanvas);
+    procedure Debug(const value: Boolean);
+    procedure Running(const value: Boolean);
     procedure Shutdown;
     procedure KillAll;
     property OnClock: IEvent<EventClock> read GetOnClock;

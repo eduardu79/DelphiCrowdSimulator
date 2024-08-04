@@ -83,7 +83,8 @@ type
     function GetWeapon: IWeapon;
     function CanView(const target: IMobile): Boolean;
     function CanAttack(const target: IMobile): Boolean;
-    function CanMove(const dir: Direction): Boolean;
+    function CanMove(const dir: Direction): Boolean; overload;
+    function CanMove(const target: IObject): Boolean; overload;
     function CanEquip(const equipmt: IEquipment): Boolean;
     procedure Attack(const target: IMobile);
     procedure ApplyDamage(const source: IMobile); overload;
@@ -500,6 +501,11 @@ end;
 function Mobile.CanMove(const dir: Direction): Boolean;
 begin
   Result := CheckMoveCooldown and World.CanMove(Self, GetNewPosition(dir));
+end;
+
+function Mobile.CanMove(const target: IObject): Boolean;
+begin
+  Result := CheckMoveCooldown and World.CanMove(Self, GetNewPosition(GetDirection(target)));
 end;
 
 function Mobile.CanView(const target: IMobile): Boolean;

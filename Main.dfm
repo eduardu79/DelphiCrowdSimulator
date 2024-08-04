@@ -2,6 +2,8 @@ object MainForm: TMainForm
   Left = 0
   Top = 0
   Margins.Top = 0
+  Margins.Right = 5
+  Caption = 'Simulador de AI '
   ClientHeight = 561
   ClientWidth = 834
   Color = clBlack
@@ -20,18 +22,17 @@ object MainForm: TMainForm
   object panelMain: TPanel
     Left = 0
     Top = 0
-    Width = 685
+    Width = 690
     Height = 561
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitWidth = 635
     object paintBox: TPaintBox
       AlignWithMargins = True
       Left = 5
       Top = 5
-      Width = 675
-      Height = 399
+      Width = 680
+      Height = 400
       Margins.Left = 5
       Margins.Top = 5
       Margins.Right = 5
@@ -41,17 +42,22 @@ object MainForm: TMainForm
       ParentColor = False
       OnPaint = paintBoxPaint
       ExplicitWidth = 225
+      ExplicitHeight = 399
     end
     object richEditLog: TRichEdit
       AlignWithMargins = True
-      Left = 3
-      Top = 412
-      Width = 679
+      Left = 5
+      Top = 410
+      Width = 680
       Height = 146
+      Margins.Left = 5
+      Margins.Top = 0
+      Margins.Right = 5
+      Margins.Bottom = 5
       TabStop = False
       Align = alBottom
       BorderStyle = bsNone
-      Color = clBlack
+      Color = clBackground
       Font.Charset = ANSI_CHARSET
       Font.Color = clGreen
       Font.Height = -11
@@ -61,7 +67,6 @@ object MainForm: TMainForm
       ReadOnly = True
       TabOrder = 0
       Zoom = 100
-      ExplicitWidth = 629
     end
   end
   object panelControls: TPanel
@@ -70,7 +75,7 @@ object MainForm: TMainForm
     Top = 5
     Width = 139
     Height = 551
-    Margins.Left = 5
+    Margins.Left = 0
     Margins.Top = 5
     Margins.Right = 5
     Margins.Bottom = 5
@@ -78,7 +83,6 @@ object MainForm: TMainForm
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 1
-    ExplicitLeft = 640
     object Label2: TLabel
       AlignWithMargins = True
       Left = 7
@@ -302,7 +306,7 @@ object MainForm: TMainForm
       AlignWithMargins = True
       Left = 8
       Top = 310
-      Width = 125
+      Width = 55
       Height = 17
       Margins.Bottom = 0
       Caption = 'Debug'
@@ -392,6 +396,19 @@ object MainForm: TMainForm
       Margins.Bottom = 0
       Caption = 'Equipar arco'
       TabOrder = 18
+    end
+    object edtRunning: TCheckBox
+      AlignWithMargins = True
+      Left = 69
+      Top = 310
+      Width = 64
+      Height = 17
+      Margins.Bottom = 0
+      Caption = 'Running'
+      Checked = True
+      State = cbChecked
+      TabOrder = 19
+      OnClick = edtRunningClick
     end
   end
 end

@@ -58,9 +58,7 @@ begin
       if Mobile.CanMove(fDirection) then
       begin
         Break;
-      end
-      else
-        Randomize;
+      end;
     end;
   end;
   Result := fDirection;

@@ -18,6 +18,7 @@ type
     fMobiles: IList<IMobile>;
     fDeadMobiles: IList<IMobile>;
     fSize: TSize;
+    fRunning: Boolean;
     fTimer: TTimer;
     fClock: Int64;
     fDebug: Boolean;
@@ -50,11 +51,13 @@ type
     procedure Draw(const canvas: TCanvas);
     procedure Shutdown;
     procedure KillAll;
-    procedure Debug(const value: Boolean); overload;
-    function Debug: Boolean; overload;
+    procedure Debug(const value: Boolean);
+    procedure Running(const value: Boolean);
     function CreateMobile(const mob: BaseObjectClass): IMobile; overload;
     function CreateMobile(const mob: BaseObjectClass; const params: array of TValue): IMobile; overload;
     function CreateEquipment(const equip: BaseObjectClass): IEquipment; overload;
+    function IsDebug: Boolean;
+    function IsRunning: Boolean;
     property OnClock: IEvent<EventClock> read GetOnClock;
     property OnMobileDamaged: IEvent<EventDamage> read GetOnMobileDamaged;
     property OnMobileDied: IEvent<EventMobile> read GetOnMobileDied;
@@ -221,7 +224,7 @@ begin
   Result := fSize;
 end;
 
-function WorldObject.Debug: Boolean;
+function WorldObject.IsDebug: Boolean;
 begin
   Result := fDebug;
 end;
@@ -246,16 +249,27 @@ begin
   Result := fMobiles.ToArray;
 end;
 
+function WorldObject.IsRunning: Boolean;
+begin
+  Result := fRunning;
+end;
+
 procedure WorldObject.Initialize(const width, height: Word);
 begin
   Resize(width, height);
   fClock := 0;
+  fRunning := True;
   fTimer.Enabled := True;
 end;
 
 procedure WorldObject.Resize(const width, height: Word);
 begin
   fSize := TSize.Create(width, height);
+end;
+
+procedure WorldObject.Running(const value: Boolean);
+begin
+  fRunning := value;
 end;
 
 procedure WorldObject.Draw(const canvas: TCanvas);
@@ -287,7 +301,7 @@ begin
 
       canvas.Brush.Style := bsClear;
 
-      if Debug then
+      if IsDebug then
       begin
         canvas.Pen.Style := psSolid;
         canvas.Pen.Color := $000050;
@@ -415,8 +429,11 @@ end;
 
 procedure WorldObject.TimerOnTick(sender: TObject);
 begin
-  Inc(fClock);
-  DoOnClock;
+  if IsRunning then
+  begin
+    Inc(fClock);
+    DoOnClock;
+  end;
 end;
 
 end.

@@ -47,8 +47,15 @@ begin
       begin
         Mobile.Attack(mob);
       end
-      else
+      else if Mobile.CanMove(mob) then
+      begin
         Mobile.Move(mob);
+      end
+      else
+      begin
+        fTarget := nil;
+        inherited;
+      end;
     end
     else
     begin

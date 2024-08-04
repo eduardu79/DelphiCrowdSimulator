@@ -43,6 +43,7 @@ type
     edtRandomStats: TCheckBox;
     edtDagger: TCheckBox;
     edtBow: TCheckBox;
+    edtRunning: TCheckBox;
     procedure addAIMobileBtnClick(Sender: TObject);
     procedure paintBoxPaint(Sender: TObject);
     procedure addPlayerMobileBtnClick(Sender: TObject);
@@ -50,6 +51,7 @@ type
     procedure edtDebugClick(Sender: TObject);
     procedure edtRandomStatsClick(Sender: TObject);
     procedure spinEditTeamsChange(Sender: TObject);
+    procedure edtRunningClick(Sender: TObject);
   strict private type
     AIStyle = (aiNone, aiPacific, aiXeno, aiPsycho);
   strict private
@@ -281,6 +283,11 @@ begin
   edtStr.Enabled := not edtRandomStats.Checked;
   edtDex.Enabled := not edtRandomStats.Checked;
   edtInt.Enabled := not edtRandomStats.Checked;
+end;
+
+procedure TMainForm.edtRunningClick(Sender: TObject);
+begin
+  fWorld.Running(edtRunning.Checked);
 end;
 
 procedure TMainForm.CreateMobile(const name: String;
