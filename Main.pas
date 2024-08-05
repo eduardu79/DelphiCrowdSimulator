@@ -52,6 +52,9 @@ type
     procedure edtRandomStatsClick(Sender: TObject);
     procedure spinEditTeamsChange(Sender: TObject);
     procedure edtRunningClick(Sender: TObject);
+    procedure edtDaggerClick(Sender: TObject);
+    procedure edtSwordClick(Sender: TObject);
+    procedure edtBowClick(Sender: TObject);
   strict private type
     AIStyle = (aiNone, aiPacific, aiXeno, aiPsycho);
   strict private
@@ -288,6 +291,33 @@ end;
 procedure TMainForm.edtRunningClick(Sender: TObject);
 begin
   fWorld.Running(edtRunning.Checked);
+end;
+
+procedure TMainForm.edtDaggerClick(Sender: TObject);
+begin
+  if edtDagger.Checked then
+  begin
+    edtSword.Checked := False;
+    edtBow.Checked := False;
+  end;
+end;
+
+procedure TMainForm.edtSwordClick(Sender: TObject);
+begin
+  if edtSword.Checked then
+  begin
+    edtDagger.Checked := False;
+    edtBow.Checked := False;
+  end;
+end;
+
+procedure TMainForm.edtBowClick(Sender: TObject);
+begin
+  if edtBow.Checked then
+  begin
+    edtDagger.Checked := False;
+    edtSword.Checked := False;
+  end;
 end;
 
 procedure TMainForm.CreateMobile(const name: String;

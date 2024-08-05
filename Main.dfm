@@ -3,7 +3,7 @@ object MainForm: TMainForm
   Top = 0
   Margins.Top = 0
   Margins.Right = 5
-  Caption = 'Simulador de AI '
+  Caption = 'Crowd simulator'
   ClientHeight = 561
   ClientWidth = 834
   Color = clBlack
@@ -41,8 +41,6 @@ object MainForm: TMainForm
       Color = clBlack
       ParentColor = False
       OnPaint = paintBoxPaint
-      ExplicitWidth = 225
-      ExplicitHeight = 399
     end
     object richEditLog: TRichEdit
       AlignWithMargins = True
@@ -57,7 +55,7 @@ object MainForm: TMainForm
       TabStop = False
       Align = alBottom
       BorderStyle = bsNone
-      Color = clBackground
+      Color = 1315860
       Font.Charset = ANSI_CHARSET
       Font.Color = clGreen
       Font.Height = -11
@@ -208,6 +206,7 @@ object MainForm: TMainForm
       Margins.Bottom = 0
       Caption = 'Equipar espada'
       TabOrder = 2
+      OnClick = edtSwordClick
     end
     object radioButtonPacific: TRadioButton
       AlignWithMargins = True
@@ -386,6 +385,7 @@ object MainForm: TMainForm
       Margins.Bottom = 0
       Caption = 'Equipar adaga'
       TabOrder = 17
+      OnClick = edtDaggerClick
     end
     object edtBow: TCheckBox
       AlignWithMargins = True
@@ -396,6 +396,7 @@ object MainForm: TMainForm
       Margins.Bottom = 0
       Caption = 'Equipar arco'
       TabOrder = 18
+      OnClick = edtBowClick
     end
     object edtRunning: TCheckBox
       AlignWithMargins = True
