@@ -259,7 +259,7 @@ object MainForm: TMainForm
       Width = 77
       Height = 20
       Margins.Bottom = 0
-      Caption = 'Kill them all!'
+      Caption = 'Matar todos'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11

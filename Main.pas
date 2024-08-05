@@ -63,18 +63,19 @@ type
     fWorld: WorldObject;
     function Translate(const part: BodyPartType): String;
     procedure WorldClockEvent;
+    procedure PlayerDied(const mob: IMobile);
     procedure MobileDamagedEvent(const data: EventDamageData);
     procedure MobileDiedEvent(const source: IMobile);
     procedure Log(const text: String; const hue: TColor = clGreen);
-    procedure CreateMobile(const name: String;
-                           const hue: TColor;
-                           const giveDagger: Boolean;
-                           const giveSword: Boolean;
-                           const giveBow: Boolean;
-                           const giveArmor: Boolean;
-                           const randomStats: Boolean;
-                           const str, dex, int: AttributeValue;
-                           const aiStyle: AIStyle);
+    function CreateMobile(const name: String;
+                          const hue: TColor;
+                          const giveDagger: Boolean;
+                          const giveSword: Boolean;
+                          const giveBow: Boolean;
+                          const giveArmor: Boolean;
+                          const randomStats: Boolean;
+                          const str, dex, int: AttributeValue;
+                          const aiStyle: AIStyle): IMobile;
   protected
     procedure DoShow; override;
     procedure Resize; override;
@@ -218,9 +219,16 @@ begin
   fWorld.Draw(PaintBox.Canvas);
 end;
 
-procedure TMainForm.addPlayerMobileBtnClick(Sender: TObject);
+procedure TMainForm.PlayerDied(const mob: IMobile);
 begin
-  CreateMobile(edtName.Text,
+  addPlayerMobileBtn.Enabled := True;
+end;
+
+procedure TMainForm.addPlayerMobileBtnClick(Sender: TObject);
+var
+  mob: IMobile;
+begin
+  mob := CreateMobile(edtName.Text,
                edtColor.Selected,
                edtDagger.Checked,
                edtSword.Checked,
@@ -231,6 +239,7 @@ begin
                edtDex.Value,
                edtInt.Value,
                aiNone);
+  mob.OnDied.Add(PlayerDied);
   addPlayerMobileBtn.Enabled := False;
 end;
 
@@ -342,7 +351,7 @@ begin
   end;
 end;
 
-procedure TMainForm.CreateMobile(const name: String;
+function TMainForm.CreateMobile(const name: String;
                                  const hue: TColor;
                                  const giveDagger: Boolean;
                                  const giveSword: Boolean;
@@ -350,7 +359,7 @@ procedure TMainForm.CreateMobile(const name: String;
                                  const giveArmor: Boolean;
                                  const randomStats: Boolean;
                                  const str, dex, int: AttributeValue;
-                                 const aiStyle: AIStyle);
+                                 const aiStyle: AIStyle): IMobile;
 var
   mobName: String;
   mobColor: TColor;
@@ -405,6 +414,8 @@ begin
     mob.Equip(fWorld.CreateEquipment(HandArmor));
     mob.Equip(fWorld.CreateEquipment(HandArmor));
   end;
+
+  Result := mob;
 end;
 
 function TMainForm.Translate(const part: BodyPartType): String;
