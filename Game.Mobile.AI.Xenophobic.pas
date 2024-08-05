@@ -9,14 +9,14 @@ uses
 type
   XenophobicAI = class(HostileAI)
   protected
-    function MobileIsTarget(const target: IMobile): Boolean; override;
+    function CanBeTarget(const target: IMobile): Boolean; override;
   end;
 
 implementation
 
 { XenophobicAI }
 
-function XenophobicAI.MobileIsTarget(const target: IMobile): Boolean;
+function XenophobicAI.CanBeTarget(const target: IMobile): Boolean;
 begin
   Result := target.Color <> Mobile.Color;
 end;
