@@ -81,7 +81,6 @@ object MainForm: TMainForm
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 1
-    ExplicitLeft = 691
     object Label2: TLabel
       AlignWithMargins = True
       Left = 7
@@ -112,7 +111,7 @@ object MainForm: TMainForm
     end
     object Label1: TLabel
       Left = 6
-      Top = 110
+      Top = 96
       Width = 19
       Height = 13
       Caption = 'STR'
@@ -125,7 +124,7 @@ object MainForm: TMainForm
     end
     object Label3: TLabel
       Left = 6
-      Top = 135
+      Top = 121
       Width = 19
       Height = 13
       Caption = 'DEX'
@@ -138,7 +137,7 @@ object MainForm: TMainForm
     end
     object Label4: TLabel
       Left = 6
-      Top = 160
+      Top = 146
       Width = 17
       Height = 13
       Caption = 'INT'
@@ -175,19 +174,19 @@ object MainForm: TMainForm
     object edtName: TEdit
       AlignWithMargins = True
       Left = 6
-      Top = 185
+      Top = 175
       Width = 125
       Height = 24
       Margins.Bottom = 0
       TabOrder = 0
-      TextHint = 'Nome da criatura'
+      TextHint = 'Nome (opcional)'
     end
     object edtColor: TColorListBox
       AlignWithMargins = True
       Left = 6
-      Top = 216
+      Top = 210
       Width = 125
-      Height = 129
+      Height = 141
       Margins.Bottom = 0
       Selected = clMaroon
       Style = [cbStandardColors, cbPrettyNames]
@@ -213,7 +212,7 @@ object MainForm: TMainForm
     object edtSword: TCheckBox
       AlignWithMargins = True
       Left = 6
-      Top = 371
+      Top = 379
       Width = 107
       Height = 17
       Margins.Bottom = 0
@@ -237,10 +236,10 @@ object MainForm: TMainForm
       AlignWithMargins = True
       Left = 6
       Top = 45
-      Width = 83
+      Width = 129
       Height = 17
       Margins.Bottom = 0
-      Caption = 'Xenof'#243'bico'
+      Caption = 'Ataca os diferentes'
       TabOrder = 7
     end
     object radioButtonHostile: TRadioButton
@@ -250,7 +249,7 @@ object MainForm: TMainForm
       Width = 83
       Height = 17
       Margins.Bottom = 0
-      Caption = 'Psicopata'
+      Caption = 'Ataca todos'
       TabOrder = 6
     end
     object btnKillAll: TButton
@@ -273,7 +272,7 @@ object MainForm: TMainForm
     object edtArmor: TCheckBox
       AlignWithMargins = True
       Left = 6
-      Top = 411
+      Top = 419
       Width = 126
       Height = 17
       Margins.Bottom = 0
@@ -281,7 +280,7 @@ object MainForm: TMainForm
       TabOrder = 9
     end
     object spinEditTeams: TSpinEdit
-      Left = 8
+      Left = 6
       Top = 452
       Width = 35
       Height = 22
@@ -327,8 +326,8 @@ object MainForm: TMainForm
     end
     object edtStr: TSpinEdit
       Left = 30
-      Top = 107
-      Width = 45
+      Top = 93
+      Width = 40
       Height = 22
       Enabled = False
       Font.Charset = DEFAULT_CHARSET
@@ -344,8 +343,8 @@ object MainForm: TMainForm
     end
     object edtDex: TSpinEdit
       Left = 30
-      Top = 132
-      Width = 45
+      Top = 118
+      Width = 40
       Height = 22
       Enabled = False
       Font.Charset = DEFAULT_CHARSET
@@ -361,8 +360,8 @@ object MainForm: TMainForm
     end
     object edtInt: TSpinEdit
       Left = 30
-      Top = 157
-      Width = 45
+      Top = 143
+      Width = 40
       Height = 22
       Enabled = False
       Font.Charset = DEFAULT_CHARSET
@@ -378,12 +377,12 @@ object MainForm: TMainForm
     end
     object edtRandomStats: TCheckBox
       AlignWithMargins = True
-      Left = 6
-      Top = 85
-      Width = 121
+      Left = 80
+      Top = 120
+      Width = 55
       Height = 17
       Margins.Bottom = 0
-      Caption = 'Randomizar'
+      Caption = 'Rand.'
       Checked = True
       State = cbChecked
       TabOrder = 16
@@ -392,7 +391,7 @@ object MainForm: TMainForm
     object edtDagger: TCheckBox
       AlignWithMargins = True
       Left = 6
-      Top = 351
+      Top = 359
       Width = 107
       Height = 17
       Margins.Bottom = 0
@@ -403,7 +402,7 @@ object MainForm: TMainForm
     object edtBow: TCheckBox
       AlignWithMargins = True
       Left = 6
-      Top = 391
+      Top = 399
       Width = 126
       Height = 17
       Margins.Bottom = 0
