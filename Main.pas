@@ -11,7 +11,7 @@ uses
   Vcl.Graphics,
   Vcl.Forms,
   Game,
-  Game.World, Vcl.ComCtrls, Vcl.Samples.Spin;
+  Game.World, Vcl.ComCtrls, Vcl.Samples.Spin, Vcl.Buttons;
 
 type
   TMainForm = class(TForm)
@@ -44,6 +44,7 @@ type
     edtDagger: TCheckBox;
     edtBow: TCheckBox;
     edtRunning: TCheckBox;
+    btnHelp: TSpeedButton;
     procedure addAIMobileBtnClick(Sender: TObject);
     procedure paintBoxPaint(Sender: TObject);
     procedure addPlayerMobileBtnClick(Sender: TObject);
@@ -55,6 +56,7 @@ type
     procedure edtDaggerClick(Sender: TObject);
     procedure edtSwordClick(Sender: TObject);
     procedure edtBowClick(Sender: TObject);
+    procedure btnHelpClick(Sender: TObject);
   strict private type
     AIStyle = (aiNone, aiPacific, aiXeno, aiPsycho);
   strict private
@@ -87,6 +89,7 @@ uses
   System.SysUtils,
   System.StrUtils,
   System.Math,
+  Vcl.Dialogs,
   Spring,
   Game.Mobile.AI,
   Game.Mobile.AI.Pacific,
@@ -117,6 +120,25 @@ begin
   inherited;
   fWorld.Shutdown;
   fWorld.Free;
+end;
+
+procedure TMainForm.btnHelpClick(Sender: TObject);
+var
+  help: TStrings;
+begin
+  help := TStringList.Create;
+  try
+    help.Add('AI pacífico apenas anda');
+    help.Add('AI psicopata ataca todos');
+    help.Add('AI xenofóbico ataca os de cor diferente');
+    help.Add(EmptyStr);
+    help.Add('STR afeta o tamanho, hp e dano');
+    help.Add('DEX afeta a velocidade');
+    help.Add('INT afeta o campo de visão');
+    ShowMessage(help.Text);
+  finally
+    help.Free;
+  end;
 end;
 
 procedure TMainForm.btnKillAllClick(Sender: TObject);

@@ -3,7 +3,7 @@ object MainForm: TMainForm
   Top = 0
   Margins.Top = 0
   Margins.Right = 5
-  Caption = 'Crowd simulator'
+  Caption = 'Crowd Simulator'
   ClientHeight = 561
   ClientWidth = 834
   Color = clBlack
@@ -81,6 +81,7 @@ object MainForm: TMainForm
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 1
+    ExplicitLeft = 691
     object Label2: TLabel
       AlignWithMargins = True
       Left = 7
@@ -98,7 +99,7 @@ object MainForm: TMainForm
     end
     object LabelTeams: TLabel
       Left = 49
-      Top = 474
+      Top = 455
       Width = 42
       Height = 13
       Caption = 'Times de'
@@ -110,8 +111,8 @@ object MainForm: TMainForm
       ParentFont = False
     end
     object Label1: TLabel
-      Left = 7
-      Top = 202
+      Left = 6
+      Top = 110
       Width = 19
       Height = 13
       Caption = 'STR'
@@ -123,8 +124,8 @@ object MainForm: TMainForm
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 7
-      Top = 227
+      Left = 6
+      Top = 135
       Width = 19
       Height = 13
       Caption = 'DEX'
@@ -136,8 +137,8 @@ object MainForm: TMainForm
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 7
-      Top = 252
+      Left = 6
+      Top = 160
       Width = 17
       Height = 13
       Caption = 'INT'
@@ -148,10 +149,22 @@ object MainForm: TMainForm
       Font.Style = []
       ParentFont = False
     end
+    object btnHelp: TSpeedButton
+      Left = 116
+      Top = 0
+      Width = 23
+      Height = 22
+      Hint = 'Help'
+      Caption = '?'
+      Flat = True
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnHelpClick
+    end
     object addAIMobileBtn: TButton
       AlignWithMargins = True
       Left = 6
-      Top = 499
+      Top = 480
       Width = 127
       Height = 25
       Margins.Bottom = 0
@@ -161,8 +174,8 @@ object MainForm: TMainForm
     end
     object edtName: TEdit
       AlignWithMargins = True
-      Left = 8
-      Top = 281
+      Left = 6
+      Top = 185
       Width = 125
       Height = 24
       Margins.Bottom = 0
@@ -171,8 +184,8 @@ object MainForm: TMainForm
     end
     object edtColor: TColorListBox
       AlignWithMargins = True
-      Left = 8
-      Top = 334
+      Left = 6
+      Top = 216
       Width = 125
       Height = 129
       Margins.Bottom = 0
@@ -183,7 +196,7 @@ object MainForm: TMainForm
     object addPlayerMobileBtn: TButton
       AlignWithMargins = True
       Left = 6
-      Top = 526
+      Top = 507
       Width = 48
       Height = 20
       Margins.Bottom = 0
@@ -200,7 +213,7 @@ object MainForm: TMainForm
     object edtSword: TCheckBox
       AlignWithMargins = True
       Left = 6
-      Top = 109
+      Top = 371
       Width = 107
       Height = 17
       Margins.Bottom = 0
@@ -243,7 +256,7 @@ object MainForm: TMainForm
     object btnKillAll: TButton
       AlignWithMargins = True
       Left = 56
-      Top = 526
+      Top = 507
       Width = 77
       Height = 20
       Margins.Bottom = 0
@@ -260,7 +273,7 @@ object MainForm: TMainForm
     object edtArmor: TCheckBox
       AlignWithMargins = True
       Left = 6
-      Top = 149
+      Top = 411
       Width = 126
       Height = 17
       Margins.Bottom = 0
@@ -269,7 +282,7 @@ object MainForm: TMainForm
     end
     object spinEditTeams: TSpinEdit
       Left = 8
-      Top = 471
+      Top = 452
       Width = 35
       Height = 22
       Font.Charset = DEFAULT_CHARSET
@@ -286,7 +299,7 @@ object MainForm: TMainForm
     end
     object spinEditTeamSize: TSpinEdit
       Left = 98
-      Top = 471
+      Top = 452
       Width = 35
       Height = 22
       Font.Charset = DEFAULT_CHARSET
@@ -303,8 +316,8 @@ object MainForm: TMainForm
     end
     object edtDebug: TCheckBox
       AlignWithMargins = True
-      Left = 8
-      Top = 310
+      Left = 6
+      Top = 530
       Width = 55
       Height = 17
       Margins.Bottom = 0
@@ -314,7 +327,7 @@ object MainForm: TMainForm
     end
     object edtStr: TSpinEdit
       Left = 30
-      Top = 199
+      Top = 107
       Width = 45
       Height = 22
       Enabled = False
@@ -331,7 +344,7 @@ object MainForm: TMainForm
     end
     object edtDex: TSpinEdit
       Left = 30
-      Top = 224
+      Top = 132
       Width = 45
       Height = 22
       Enabled = False
@@ -348,7 +361,7 @@ object MainForm: TMainForm
     end
     object edtInt: TSpinEdit
       Left = 30
-      Top = 249
+      Top = 157
       Width = 45
       Height = 22
       Enabled = False
@@ -366,7 +379,7 @@ object MainForm: TMainForm
     object edtRandomStats: TCheckBox
       AlignWithMargins = True
       Left = 6
-      Top = 177
+      Top = 85
       Width = 121
       Height = 17
       Margins.Bottom = 0
@@ -379,7 +392,7 @@ object MainForm: TMainForm
     object edtDagger: TCheckBox
       AlignWithMargins = True
       Left = 6
-      Top = 89
+      Top = 351
       Width = 107
       Height = 17
       Margins.Bottom = 0
@@ -390,7 +403,7 @@ object MainForm: TMainForm
     object edtBow: TCheckBox
       AlignWithMargins = True
       Left = 6
-      Top = 129
+      Top = 391
       Width = 126
       Height = 17
       Margins.Bottom = 0
@@ -400,8 +413,8 @@ object MainForm: TMainForm
     end
     object edtRunning: TCheckBox
       AlignWithMargins = True
-      Left = 69
-      Top = 310
+      Left = 67
+      Top = 530
       Width = 64
       Height = 17
       Margins.Bottom = 0
