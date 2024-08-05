@@ -15,7 +15,7 @@ type
     function GetTarget: IMobile;
   protected
     procedure Cycle; override;
-    function MobileIsTarget(const target: IMobile): Boolean; virtual;
+    function CanBeTarget(const target: IMobile): Boolean; virtual;
   end;
 
 implementation
@@ -31,7 +31,7 @@ begin
   begin
     for mob in MobilesInRange do
     begin
-      if MobileIsTarget(mob) and Mobile.CanView(mob) then
+      if CanBeTarget(mob) and Mobile.CanView(mob) then
       begin
         Lock(mob);
       end;
@@ -76,7 +76,7 @@ begin
  end;
 end;
 
-function HostileAI.MobileIsTarget(const target: IMobile): Boolean;
+function HostileAI.CanBeTarget(const target: IMobile): Boolean;
 begin
   Result := True;
 end;
