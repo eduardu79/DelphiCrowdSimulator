@@ -20,8 +20,8 @@ type
     dEast,
     dWest,
     dNorthEast,
-    dSouthEast,
     dSouthWest,
+    dSouthEast,
     dNorthWest
   );
 
