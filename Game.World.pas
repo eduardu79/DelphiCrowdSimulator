@@ -277,6 +277,7 @@ const
   TOTALXHP = 40;
 var
   mob: IMobile;
+  inRange: IMobile;
   ypos: Word;
   text: String;
 begin
@@ -320,6 +321,11 @@ begin
           Trunc(mob.Position.Y - mob.SightRange),
           Trunc(mob.Position.X + mob.SightRange),
           Trunc(mob.Position.Y + mob.SightRange));
+
+        for inRange in mob.GetMobilesInRange do
+        begin
+          canvas.Polyline([mob.Position, inRange.Position]);
+        end;
 
         ypos := Trunc(mob.Position.Y - mob.Size - 20);
         canvas.TextOut(mob.Position.X - canvas.TextExtent(mob.Name).Width div 2, ypos, mob.Name);

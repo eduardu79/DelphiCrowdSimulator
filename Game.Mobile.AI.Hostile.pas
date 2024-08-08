@@ -29,7 +29,7 @@ begin
   mob := GetTarget;
   if mob = nil then
   begin
-    for mob in MobilesInRange do
+    for mob in Mobile.GetMobilesInRange do
     begin
       if CanBeTarget(mob) and Mobile.CanView(mob) then
       begin

@@ -250,6 +250,7 @@ type
     function CanMove(const target: IObject): Boolean; overload;
     function GetAttributeLevel(const attr: AttributeType): AttributeLevel;
     function GetEquipments: TArray<IEquipment>;
+    function GetMobilesInRange: TArray<IMobile>;
     function GetWeapon: IWeapon;
     function GetOnDamaged: IEvent<EventDamage>;
     function GetOnDied: IEvent<EventMobile>;
@@ -519,7 +520,7 @@ end;
 
 function BaseObject.GetDistance(const target: IObject): Word;
 begin
-  Result := Trunc(Position.Distance(target.Position));
+  Result := Trunc(Position.Distance(target.Position) - (target.Size / 2));
 end;
 
 procedure BaseObject.SetName(const value: String);

@@ -22,6 +22,7 @@ type
     fResist: ResistData;
   public
     constructor Create(const aResist: ResistData);
+    destructor Destroy; override;
     function Resist: ResistData;
   end;
 
@@ -80,6 +81,7 @@ type
     function IsAlive: Boolean;
     function GetAttributeLevel(const attr: AttributeType): AttributeLevel;
     function GetEquipments: TArray<IEquipment>;
+    function GetMobilesInRange: TArray<IMobile>;
     function GetWeapon: IWeapon;
     function CanView(const target: IMobile): Boolean;
     function CanAttack(const target: IMobile): Boolean;
@@ -137,7 +139,6 @@ type
     procedure InternalCycle;
   protected
     function Mobile: IMobile;
-    function MobilesInRange: TArray<IMobile>;
     procedure Cycle; virtual; abstract;
   public
     constructor Create(const mob: IMobile); virtual;
@@ -379,6 +380,23 @@ begin
   end;
 end;
 
+function Mobile.GetMobilesInRange: TArray<IMobile>;
+var
+  mob: IMobile;
+begin
+  Result := [];
+  if IsAlive then
+  begin
+    for mob in World.Mobiles do
+    begin
+      if mob.IsAlive and (mob.Serial <> Serial) and CanView(mob) then
+      begin
+        Result := Result + [mob];
+      end;
+    end;
+  end;
+end;
+
 function Mobile.GetNewPosition(const dir: Direction): TPoint;
 begin
   Result := Position;
@@ -525,7 +543,7 @@ end;
 
 function Mobile.CheckAttackRange(const target: IMobile): Boolean;
 begin
-  Result := GetDistance(target) <= AttackRange + Trunc(target.Size / 2) + 1;
+  Result := GetDistance(target) <= AttackRange;
 end;
 
 function Mobile.CheckMoveCooldown: Boolean;
@@ -1009,29 +1027,17 @@ begin
   Result := fMobile;
 end;
 
-function MobileController.MobilesInRange: TArray<IMobile>;
-var
-  mob: IMobile;
-  mobs: TArray<IMobile>;
-begin
-  mobs := [];
-  if (Mobile <> nil) and Mobile.IsAlive then
-  begin
-    for mob in Mobile.World.Mobiles do
-    begin
-      if mob.IsAlive and (mob.Serial <> Mobile.Serial) and Mobile.CanView(mob) then
-      begin
-        Result := Result + [mob];
-      end;
-    end;
-  end;
-end;
-
 { TempResistEntry }
 
 constructor TempResistEntry.Create(const aResist: ResistData);
 begin
   fResist := aResist;
+end;
+
+destructor TempResistEntry.Destroy;
+begin
+  fResist.Free;
+  inherited;
 end;
 
 function TempResistEntry.Resist: ResistData;
