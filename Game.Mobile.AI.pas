@@ -19,18 +19,11 @@ type
     function GetRandomDirection: Direction;
     function GetMoveDirection: Direction; virtual; abstract;
     function LastDirectionChange: Int64;
-  public
-    constructor Create(const mob: IMobile); override;
   end;
 
 implementation
 
 { MobileAIController }
-
-constructor MobileAIController.Create(const mob: IMobile);
-begin
-  inherited;
-end;
 
 procedure MobileAIController.Cycle;
 begin
@@ -54,7 +47,7 @@ begin
     fLastDirChange := Mobile.World.Clock;
     for i := 1 to MAX_TRIES do
     begin
-      fDirection := Direction(Random(Integer(High(Direction))));
+      fDirection := Direction(Random(Integer(High(Direction)) + 1));
       if Mobile.CanMove(fDirection) then
       begin
         Break;
