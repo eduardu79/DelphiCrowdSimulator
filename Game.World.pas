@@ -277,7 +277,7 @@ const
   TOTALXHP = 40;
 var
   mob: IMobile;
-  inRange: IMobile;
+  mobInRange: IMobile;
   ypos: Word;
   text: String;
 begin
@@ -290,16 +290,7 @@ begin
   begin
     if mob.IsAlive then
     begin
-      canvas.Brush.Color := mob.Color;
       canvas.Font.Color := mob.Color;
-      canvas.Pen.Color := mob.Color;
-
-      canvas.Ellipse(
-        Trunc(mob.Position.X - (mob.Size / 2)),
-        Trunc(mob.Position.Y - (mob.Size / 2)),
-        Trunc(mob.Position.X + (mob.Size / 2)),
-        Trunc(mob.Position.Y + (mob.Size / 2)));
-
       canvas.Brush.Style := bsClear;
 
       if IsDebug then
@@ -322,9 +313,16 @@ begin
           Trunc(mob.Position.X + mob.SightRange),
           Trunc(mob.Position.Y + mob.SightRange));
 
-        for inRange in mob.GetMobilesInRange do
+        for mobInRange in mob.GetMobilesInRange do
         begin
-          canvas.Polyline([mob.Position, inRange.Position]);
+          canvas.Pen.Style := psDot;
+
+          if mobInRange.CanView(mob) then
+          begin
+            canvas.Pen.Style := psSolid;
+          end;
+
+          canvas.Polyline([mob.Position, mobInRange.Position]);
         end;
 
         ypos := Trunc(mob.Position.Y - mob.Size - 20);
@@ -358,6 +356,15 @@ begin
         text := Format('STR: %d', [Trunc(mob.Str / 10)]);
         canvas.TextOut(mob.Position.X - canvas.TextExtent(text).Width div 2, ypos, text);
       end;
+
+      canvas.Brush.Color := mob.Color;
+      canvas.Pen.Color := mob.Color;
+
+      canvas.Ellipse(
+        Trunc(mob.Position.X - (mob.Size / 2)),
+        Trunc(mob.Position.Y - (mob.Size / 2)),
+        Trunc(mob.Position.X + (mob.Size / 2)),
+        Trunc(mob.Position.Y + (mob.Size / 2)));
     end;
   end;
 end;
