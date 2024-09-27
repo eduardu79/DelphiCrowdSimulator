@@ -5,13 +5,16 @@ interface
 uses
   Winapi.Windows,
   System.Classes,
+  Vcl.Buttons,
+  Vcl.ComCtrls, 
   Vcl.Controls,
   Vcl.ExtCtrls,
-  Vcl.StdCtrls,
-  Vcl.Graphics,
   Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.Samples.Spin, 
+  Vcl.StdCtrls,
   Game,
-  Game.World, Vcl.ComCtrls, Vcl.Samples.Spin, Vcl.Buttons;
+  Game.World;
 
 type
   TMainForm = class(TForm)
@@ -129,13 +132,13 @@ var
 begin
   help := TStringList.Create;
   try
-    help.Add('AI pacÌfico apenas anda');
+    help.Add('AI pac√≠fico apenas anda');
     help.Add('AI psicopata ataca todos');
-    help.Add('AI xenofÛbico ataca os de cor diferente');
+    help.Add('AI xenof√≥bico ataca os de cor diferente');
     help.Add(EmptyStr);
     help.Add('STR afeta o tamanho, hp e dano');
     help.Add('DEX afeta a velocidade');
-    help.Add('INT afeta o campo de vis„o');
+    help.Add('INT afeta o campo de vis√£o');
     ShowMessage(help.Text);
   finally
     help.Free;
@@ -194,8 +197,8 @@ end;
 
 procedure TMainForm.MobileDiedEvent(const source: IMobile);
 const
-  DEATHS: array[0..7] of String = ('%s bateu as botas.', '%s morreu.', '%s j· era.', '%s partiu dessa pra melhor.',
-                                   '%s foi comer capim pela raiz.', '%s foi pro belelÈu.', 'Sentiremos falta de %s.', 'Adeus %s.');
+  DEATHS: array[0..7] of String = ('%s bateu as botas.', '%s morreu.', '%s j√° era.', '%s partiu dessa pra melhor.',
+                                   '%s foi comer capim pela raiz.', '%s foi pro belel√©u.', 'Sentiremos falta de %s.', 'Adeus %s.');
 begin
   Log(Format(DEATHS[Random(Length(DEATHS))], [source.Name]), $005050FF);
 end;
@@ -421,16 +424,16 @@ end;
 function TMainForm.Translate(const part: BodyPartType): String;
 begin
   case part of
-    btHead: Result := 'a cabeÁa';
+    btHead: Result := 'a cabe√ßa';
     btTorso: Result := 'o torax';
-    btLeftHand: Result := 'a m„o esquerda';
-    btRightHand: Result := 'a m„o direita';
-    btLeftArm: Result := 'o braÁo esquerdo';
-    btRightArm: Result := 'o braÁo direito';
+    btLeftHand: Result := 'a m√£o esquerda';
+    btRightHand: Result := 'a m√£o direita';
+    btLeftArm: Result := 'o bra√ßo esquerdo';
+    btRightArm: Result := 'o bra√ßo direito';
     btLeftLeg: Result := 'a perna eaquerda';
     btRightLeg: Result := 'a perna direita';
-    btLeftFoot: Result := 'o pÈ esquerdo';
-    btRightFoot: Result := 'o pÈ direito';
+    btLeftFoot: Result := 'o p√© esquerdo';
+    btRightFoot: Result := 'o p√© direito';
   end;
 end;
 
