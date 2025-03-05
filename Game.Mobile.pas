@@ -518,12 +518,12 @@ end;
 
 function Mobile.CanMove(const dir: Direction): Boolean;
 begin
-  Result := CheckMoveCooldown and World.CanMove(Self, GetNewPosition(dir));
+  Result := World.CanMove(Self, GetNewPosition(dir));
 end;
 
 function Mobile.CanMove(const target: IObject): Boolean;
 begin
-  Result := CheckMoveCooldown and World.CanMove(Self, GetNewPosition(GetDirection(target)));
+  Result := World.CanMove(Self, GetNewPosition(GetDirection(target)));
 end;
 
 function Mobile.CanView(const target: IMobile): Boolean;
@@ -760,7 +760,7 @@ procedure Mobile.Move(const dir: Direction);
 var
   pos: TPoint;
 begin
-  if CanMove(dir) then
+  if CanMove(dir) and CheckMoveCooldown then
   begin
     fLastMove := Now;
     pos := GetNewPosition(dir);

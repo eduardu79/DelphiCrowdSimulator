@@ -41,8 +41,13 @@ const
   MAX_TRIES = 3;
 var
   i: Integer;
+  timeElapsed: Boolean;
+  cannotMove: Boolean;
 begin
-  if Mobile.World.Clock >= LastDirectionChange + Random(TICKS_PER_SECOND) + TICKS_PER_SECOND * 2 then
+  timeElapsed := Mobile.World.Clock >= LastDirectionChange + Random(TICKS_PER_SECOND) + TICKS_PER_SECOND * 2;
+  cannotMove  := not Mobile.CanMove(fDirection);
+
+  if timeElapsed or cannotMove then
   begin;
     fLastDirChange := Mobile.World.Clock;
     for i := 1 to MAX_TRIES do

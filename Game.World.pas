@@ -359,7 +359,6 @@ begin
 
       canvas.Brush.Color := mob.Color;
       canvas.Pen.Color := mob.Color;
-
       canvas.Ellipse(
         Trunc(mob.Position.X - (mob.Size / 2)),
         Trunc(mob.Position.Y - (mob.Size / 2)),

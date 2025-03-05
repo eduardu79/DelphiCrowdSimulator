@@ -16,12 +16,12 @@ type
 
   Direction = (
     dNorth,
-    dSouth,
-    dEast,
-    dWest,
     dNorthEast,
-    dSouthWest,
+    dEast,
     dSouthEast,
+    dSouth,
+    dSouthWest,
+    dWest,
     dNorthWest
   );
 
