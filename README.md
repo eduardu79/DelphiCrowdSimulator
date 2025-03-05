@@ -1,5 +1,4 @@
-![0B3FED65-DC6A-48E4-AEE4-6F903756DD5A](https://github.com/user-attachments/assets/0acc9147-f897-40c4-be51-ed11076e9de4)
-
+![8D51F0B1-BB2A-406B-AC4E-571D08D4BA73](https://github.com/user-attachments/assets/600bc921-2565-4bd7-ae28-602c5042b427)
 
 Depende da biblioteca Spring4D que pode ser encontrada aqui:
 
